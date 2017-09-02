@@ -4,9 +4,10 @@ public class Word {
 	private String eng;
 
 	public Word(String s) {
+		System.out.println("building word with "+s);
 		int spaceIndex = s.indexOf(" ");
 		jap = s.substring(0, spaceIndex);
-		eng = s.substring(spaceIndex);
+		eng = s.substring(spaceIndex + 1);
 	}
 
 	public String GetJap() {
@@ -18,7 +19,7 @@ public class Word {
 	}
 	
 	public String toString(){
-		StringBuilder sb = new StringBuilder(jap);
+		StringBuilder sb = new StringBuilder(jap+" ");
 		sb.append(eng);
 		return sb.toString();
 	}

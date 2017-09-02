@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class WordList {
-	private ArrayList<Word> list;
+	private ArrayList<Word> list= new ArrayList<Word>() ;
 	private String adress;
 	private String name;
 
@@ -13,13 +13,13 @@ public class WordList {
 		StringBuilder sb = new StringBuilder("./files/");
 		sb.append(fileName);
 		this.adress = sb.toString();
-
+		loadFile();
 	}
 
 	public void loadFile() {
 		try (BufferedReader br = new BufferedReader(new FileReader(adress))) {
 			String currentLine;
-			if ((currentLine = br.readLine()) != null) {
+			while((currentLine = br.readLine()) != null) {
 				list.add(new Word(currentLine));
 			}
 		} catch (IOException e) {
@@ -30,10 +30,13 @@ public class WordList {
 	public void MergeLists(WordList wl2) {
 	}
 
-	public void toSting() {
+	public String toSting() {
+		StringBuilder sb = new StringBuilder("----------" + name + "----------\n");
+		
 		for (Word w : list) {
-			w.toString();
+			sb.append(w.toString() + "\n");
 		}
+		return sb.toString();
 	}
 
 }
