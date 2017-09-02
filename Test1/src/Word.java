@@ -16,5 +16,11 @@ public class Word {
 	public String GetEng() {
 		return eng;
 	}
+	
+	public String toString(){
+		StringBuilder sb = new StringBuilder(jap);
+		sb.append(eng);
+		return sb.toString();
+	}
 
 }
